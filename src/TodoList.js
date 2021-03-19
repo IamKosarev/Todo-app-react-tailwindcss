@@ -21,7 +21,7 @@ const TodoList = ({
           />
         )
       })}
-      {(tab === "Completed" && todos.length > 0) ? (
+      {tab === "Completed" && todos.length > 0 ? (
         <button
           onClick={handleClearTodos}
           className="block ml-auto mt-6 bg-red-400 text-white py-2 px-6 rounded-xl shadow-lg hover:bg-red-500"

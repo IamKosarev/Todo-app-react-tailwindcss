@@ -5,11 +5,11 @@ const Tabs = ({ tab, toggleTab }) => {
     <div className="flex justify-around bg-white mt-10 border-b">
       <button
         onClick={() => toggleTab("All")}
-        className="group w-28 text-center relative"
+        className="group w-20 md:w-28 text-center relative"
       >
         <div className="py-5">All</div>
         <div
-          className="absolute bg-blue-500 w-28 h-2 bottom-0 rounded-3xl "
+          className="absolute bg-blue-500 w-20 md:w-28 h-2 bottom-0 rounded-3xl "
           style={
             tab === "All" ? { visibility: "visible" } : { visibility: "hidden" }
           }
@@ -17,11 +17,11 @@ const Tabs = ({ tab, toggleTab }) => {
       </button>
       <button
         onClick={() => toggleTab("Active")}
-        className="group w-28 text-center relative"
+        className="group w-20 md:w-28 text-center relative"
       >
         <div className="py-5">Active</div>
         <div
-          className="absolute bg-blue-500 w-28 h-2 bottom-0 rounded-3xl"
+          className="absolute bg-blue-500 w-20 md:w-28 h-2 bottom-0 rounded-3xl"
           style={
             tab === "Active"
               ? { visibility: "visible" }
@@ -31,11 +31,11 @@ const Tabs = ({ tab, toggleTab }) => {
       </button>
       <button
         onClick={() => toggleTab("Completed")}
-        className="group w-28 text-center relative"
+        className="group w-20 md:w-28 text-center relative"
       >
         <div className="py-5">Completed</div>
         <div
-          className="absolute bg-blue-500 w-28 h-2 bottom-0 rounded-3xl"
+          className="absolute bg-blue-500 w-20 md:w-28 h-2 bottom-0 rounded-3xl"
           style={
             tab === "Completed"
               ? { visibility: "visible" }

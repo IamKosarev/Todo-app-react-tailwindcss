@@ -53,7 +53,7 @@ function App() {
   }
 
   return (
-    <div className="container mx-auto text-gray-800 py-3 px-40 text-xl">
+    <div className="container mx-auto text-gray-800 py-3 px-3 sm:px-10 lg:px-40 text-base md:text-xl">
       <div className="font-bold text-4xl text-center mt-12">Todo App</div>
       <Tabs tab={tab} toggleTab={toggleTab} />
       <AddTodo handleAddTodo={handleAddTodo} todoNameRef={todoNameRef} />
