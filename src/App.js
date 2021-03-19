@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react"
 import TodoList from "./TodoList"
 import uuidv4 from "uuid/v4"
+import Tabs from "./Tabs"
+import AddTodo from "./AddTodo"
 
 const LOCAL_STORAGE_KEY = "todoApp.todos"
 
@@ -25,6 +27,7 @@ function App() {
   }
 
   const handleAddTodo = (e) => {
+    e.preventDefault()
     const name = todoNameRef.current.value
     if (name === "") return
     setTodos((prevTodos) => {
@@ -38,14 +41,42 @@ function App() {
     setTodos(newTodos)
   }
 
+  const handleDeleteTodo = (id) => {
+    const newTodos = todos.filter((todo) => id !== todo.id)
+    setTodos(newTodos)
+  }
+
+  const [tab, setTab] = useState("All")
+
+  const toggleTab = (label) => {
+    setTab(label)
+  }
+
   return (
-    <>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <input ref={todoNameRef} type="text" />
-      <button className="bg-gray-200" onClick={handleAddTodo}>Add Todo</button>
-      <button onClick={handleClearTodos}>Clear Completed</button>
-      <div>{todos.filter((todo) => !todo.complete).length} left to do</div>
-    </>
+    <div className="container mx-auto text-gray-800 py-3 px-40 text-xl">
+      <div className="font-bold text-4xl text-center mt-12">Todo App</div>
+      <Tabs tab={tab} toggleTab={toggleTab} />
+      <AddTodo handleAddTodo={handleAddTodo} todoNameRef={todoNameRef} />
+      {tab === "All" ? (
+        <TodoList todos={todos} toggleTodo={toggleTodo} tab={tab} />
+      ) : null}
+      {tab === "Active" ? (
+        <TodoList
+          todos={todos.filter((todo) => !todo.complete)}
+          toggleTodo={toggleTodo}
+          tab={tab}
+        />
+      ) : null}
+      {tab === "Completed" ? (
+        <TodoList
+          todos={todos.filter((todo) => todo.complete)}
+          toggleTodo={toggleTodo}
+          handleDeleteTodo={handleDeleteTodo}
+          handleClearTodos={handleClearTodos}
+          tab={tab}
+        />
+      ) : null}
+    </div>
   )
 }
 
