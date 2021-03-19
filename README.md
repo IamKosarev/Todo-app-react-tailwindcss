@@ -16,6 +16,8 @@
 - Add your todos
 - Switch between active and completed tabs
 - Delete completed todos
+- The data is stored in local storage so when you refresh the page you can still see your todos
+
 
 
 ## [App Demo](https://todo-app-react-tailwindcss.netlify.app/)
